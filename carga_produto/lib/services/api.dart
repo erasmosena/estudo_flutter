@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:carga_produto/models/produto.dart';
 import 'package:http/http.dart' as http;
-import 'package:carga_produto/produto.dart';
+
 
 const baseUrl = "http://192.168.0.227:3000/";
 

@@ -1,21 +1,22 @@
 
-import 'package:carga_produto/produto.dart';
+
+import 'package:carga_produto/models/produto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class ProdutoPage extends StatefulWidget {
+  ProdutoPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ProdutoPageState createState() => _ProdutoPageState();
 }
 
 
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ProdutoPageState extends State<ProdutoPage> {
   Future _data;
   @override
   void initState() {
@@ -28,17 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: <Widget>[
-      //       Text(
-      //         'Produtos carregados $_data',
-      //         style: Theme.of(context).textTheme.display1,
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: Center(
         child: FutureBuilder<Produto>(
           future: _data,

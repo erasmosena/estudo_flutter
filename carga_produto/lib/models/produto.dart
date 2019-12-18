@@ -1,9 +1,10 @@
 
 class Produto {
   final int id;
+  final String nome;
   final String descricao;
 
-  Produto({this.id, this.descricao});
+  Produto({this.id, this.nome, this.descricao});
 
   // factory Produto.fromJson(Map<String, dynamic> json) {
   //   return Produto(
@@ -14,10 +15,11 @@ class Produto {
   //outra notação 
   Produto.fromJson(Map json)
       : id = json['id'],
+        nome = json['nome'],
         descricao = json['descricao'];
 
   Map toJson() {
-    return {'id': id, 'descricao': descricao};
+    return {'id': id, nome: 'nome', 'descricao': descricao};
   }
 
 }
