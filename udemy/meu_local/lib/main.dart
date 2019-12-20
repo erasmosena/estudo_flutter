@@ -46,7 +46,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   List locais = [
     "Beira",
     "Maputo",
@@ -78,14 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
       randomColor = cores[Random().nextInt(cores.length)];
     });
   }
-@override
-void initState(){
-  super.initState();
-  _atualizarTela();
-}
+
+  @override
+  void initState() {
+    super.initState();
+    _atualizarTela();
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -102,7 +102,7 @@ void initState(){
             Text(
               '$randomTexto',
               style: Theme.of(context).textTheme.display1,
-              )
+            )
           ],
         ),
       ),
