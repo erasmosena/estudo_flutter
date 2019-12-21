@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intro_flutter/ui/coluna.dart';
 
-void main() {
-  runApp(Material(
-      color: Colors.blueGrey,
-      child: Center(
-        child: Text("fsda",
-            textDirection: TextDirection.ltr,
-            style: new TextStyle(fontSize: 134, fontWeight: FontWeight.bold)),
-      )));
+void main() { 
+  runApp(
+    MaterialApp(
+      title: "Intr  o Flutter",
+      color: Colors.deepOrange,
+      home: Coluna(),
+    ));
 }
 
-class Bemvindo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
