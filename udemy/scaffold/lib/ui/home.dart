@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
         ],
         backgroundColor: Colors.orange,
       ),
-      backgroundColor: Colors.white ,
+      backgroundColor: Colors.white,
       body: Container(
         alignment: Alignment.center,
         child: Column(
@@ -42,13 +42,25 @@ class Home extends StatelessWidget {
                   "Clique",
                   style: TextStyle(fontSize: 16.0),
                 ),
-                onTap: ()=> debugPrint("Tap"),
-                onDoubleTap: ()=> debugPrint("Double Tap"),
-                onLongPress: ()=> debugPrint("Long press"),
+                onTap: () => debugPrint("Tap"),
+                onDoubleTap: () => debugPrint("Double Tap"),
+                onLongPress: () => debugPrint("Long press"),
               ),
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.access_alarm),
+            title: Text("Perfil")
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.print),
+            title: Text("")
+          )
+        ],
       ),
     );
   }
