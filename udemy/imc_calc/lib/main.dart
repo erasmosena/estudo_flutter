@@ -3,6 +3,6 @@ import 'package:imc_calc/ui/home.dart';
 
 void main() => runApp(
   MaterialApp(
-    home: Home(),
-  )
+    home: Home()
+  ),
 );
