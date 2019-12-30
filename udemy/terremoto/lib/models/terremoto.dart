@@ -1,58 +1,25 @@
 
+import 'features.dart';
+import 'metadata.dart';
+
 class Terremoto
 {
+  Terremoto();
   String type;
   Metadata metadata;
-  List<Feature> features;
-  List<double> bbox;
+  List features;
+  List bbox;
+
+  Terremoto.fromJson(Map json)
+      : type = json['type'],
+        metadata = Metadata.fromJson(json['metadata']),
+        features = json['features'].map((model)=> Feature.fromJson(model)).toList(),
+        bbox = json['bbox'];
+
+  Map toJson() {
+    return {'type': type, 'metadata': metadata, 'features': features, 'bbox':bbox};
+  }
+
 }
 
-class Feature{
-  String type;
-  List<Property> properties;
-  Geometry geometry;
-  String id;
-}
 
-class Geometry{
-  String type;
-  List<double> coordinates;
-}
-
-class Property{
-  double mag ;
-  String place;
-  int time;
-  int updated;
-  int tz;
-  String url;
-  String detail ;
-  String felt ;
-  String cdi ;
-  String mmi ;
-  String alert ;
-  String status ;
-  int tsunami ;
-  int sig ;
-  String net ;
-  String code ;
-  String ids ;
-  String sources ;
-  String types ;
-  int nst ;
-  int dmin ;
-  int rms ;
-  int gap ;
-  String magType ;
-  String type ;
-  String title ;
-}
-
-class Metadata{
-  int generated;
-  String url;
-  String title;
-  int status;
-  String api;
-  int count;
-}
