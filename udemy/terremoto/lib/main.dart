@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:terremoto/ui/home.dart';
+import 'package:intl/intl.dart';
 
 
-void main() => runApp(MyApp());
+void main() async { 
+  Intl.defaultLocale = 'pt_BR';
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final String _title = 'Terremoto';

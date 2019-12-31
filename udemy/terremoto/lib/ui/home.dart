@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:terremoto/services/api.dart';
-
-
-
 
 import '../models/terremoto.dart';
 
@@ -18,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Terremoto _dados = Terremoto() ;
-  var format = new DateFormat("ddMMyyyy",);
+  
   @override
   void initState() {
     super.initState();
@@ -30,6 +28,20 @@ class _HomeState extends State<Home> {
     );
   }
 
+  void _exibirDetalhe(BuildContext context, String conteudo){
+    var alert = AlertDialog(
+      title: Text("Terremotos"),
+      content: Text(conteudo),
+      actions: <Widget>[
+        FlatButton(
+          child: Text("Voltar"),
+          onPressed: () => Navigator.pop(context),
+        )
+      ],
+    );
+    showDialog(context: context,builder: (context)=> alert);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +51,12 @@ class _HomeState extends State<Home> {
       body: Center(
         child: ListView.builder(
           padding: const EdgeInsets.all(14.5),
-          itemCount: _dados.features.length ,
+          itemCount: _dados?.features?.length ,
           itemBuilder: (BuildContext context, int posicao){
-            
+            initializeDateFormatting("pt_BR",null);
+            int mlsec = _dados.features[posicao].properties.time ;
+            var format = new DateFormat.yMMMMd("pt_BR").add_jm();
+            String data = format.format(DateTime.fromMillisecondsSinceEpoch(mlsec));
             return Column (
               children: <Widget>[
                 Divider(height: 5.5,),
@@ -50,9 +65,9 @@ class _HomeState extends State<Home> {
                     backgroundColor: Colors.greenAccent,
                     child: Text("${_dados.features[posicao].properties.mag}"),
                   ),
-                  title: Text("${format.format(DateTime.fromMillisecondsSinceEpoch(_dados.features[posicao].properties.time))}"),
+                  title: Text("${data}"),
                   subtitle: Text("${_dados.features[posicao].properties.place}"),
-                  onTap: null,
+                  onTap: ()=> _exibirDetalhe(context,"M ${_dados.features[posicao].properties.mag} - ${_dados.features[posicao].properties.place}"),
 
                 )
               ],
