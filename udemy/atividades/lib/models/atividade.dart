@@ -10,7 +10,7 @@ class Atividade extends StatelessWidget {
 
   Atividade.map(dynamic obj){
     this._nome = obj['nome'];
-    this._dataRegistro = obj['dataRegistro'];
+    this._dataRegistro = obj['data'];
     this._id = obj['id'];
   }
 
@@ -21,14 +21,14 @@ class Atividade extends StatelessWidget {
   Map<String,dynamic> toMap(){
     var mapa = Map<String,dynamic>();
     mapa["nome"] = _nome;
-    mapa["dataRegistro"] = _dataRegistro;
+    mapa["data"] = _dataRegistro;
     if(_id != null ) mapa["id"] = _id;
     return mapa;
   }
 
   Atividade.fromMap(Map<String,dynamic> mapa){
     this._nome = mapa["nome"];
-    this._dataRegistro = mapa["dataRegistro"];
+    this._dataRegistro = mapa["data"];
     this._id = mapa["id"];
   }
 
