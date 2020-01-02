@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:terremoto/ui/home.dart';
-import 'package:intl/intl.dart';
+import 'package:klimatico/ui/klimatico.dart';
 
+void main() => runApp(MyApp());
 
-void main() async { 
-  Intl.defaultLocale = 'pt_BR';
-  runApp(MyApp());
-}
 
 class MyApp extends StatelessWidget {
-  final String _title = 'Terremoto';
+  final String _title = 'Klimático';
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(title:_title)
+      home: Klimatico(title:_title)
     );
   }
 }
