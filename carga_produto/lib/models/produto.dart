@@ -19,7 +19,7 @@ class Produto {
         descricao = json['descricao'];
 
   Map toJson() {
-    return {'id': id, nome: 'nome', 'descricao': descricao};
+    return {'id': id, 'nome': nome, 'descricao': descricao};
   }
 
 }
