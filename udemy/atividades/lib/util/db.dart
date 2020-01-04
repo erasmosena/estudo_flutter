@@ -26,7 +26,7 @@ class DaoAtividade{
     String path = join(documentPath.path, "atividade.db");
     var newDb = await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onCreate: _onCreate);
       return newDb;
   }
@@ -36,7 +36,7 @@ class DaoAtividade{
       CREATE TABLE tb_atividade(
         id integer PRIMARY KEY,
         nome varchar(200),
-        dataRegistro varchar(50)
+        data varchar(50)
       );
     """);
     debugPrint("tabela criada");

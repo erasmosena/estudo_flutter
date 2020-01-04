@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class Atividade extends StatelessWidget {
+class Atividade  {
   String _nome;
   String _dataRegistro;
   int _id;
@@ -32,34 +32,4 @@ class Atividade extends StatelessWidget {
     this._id = mapa["id"];
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            _nome,
-            style:TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16.9
-            )
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: Text(
-              "Criado em $_dataRegistro",
-              style:TextStyle(
-                color: Colors.white70,
-                fontStyle: FontStyle.italic,
-                fontSize: 12.5
-              )
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
