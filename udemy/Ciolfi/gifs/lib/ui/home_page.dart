@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:gifs/ui/gif_page.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:share/share.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   String _rating = "G";
   String _lang = "EN";
 
-  bool get isBusca => _search != null ;
+  bool get isBusca => _search != null && _search.isNotEmpty;
   @override
   void initState() {
     super.initState();
@@ -32,8 +35,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Image.network(
-            "https://developers.giphy.com/branch/master/static/header-logo-8974b8ae658f704a5b48a2d039b8ad93.gif"),
+        title: Container(
+          height: 70,
+          child:
+          Image.network(
+            "https://i.giphy.com/media/3o6gbbuLW76jkt8vIc/giphy.webp"
+            ),
+        ),
       ),
       backgroundColor: Colors.black,
       body: Column(
@@ -127,11 +135,18 @@ class _HomePageState extends State<HomePage> {
         bool ultimo = posicao >= snapshot.data["data"].length;
         if( !isBusca || !ultimo ){
           return GestureDetector(
-            child: Image.network(
-              snapshot.data["data"][posicao]["images"]["fixed_height"]["url"],
+            child: FadeInImage.memoryNetwork(
               height: 300,
-              fit: BoxFit.cover,
+              fit:BoxFit.cover,
+              placeholder: kTransparentImage ,
+              image: snapshot.data["data"][posicao]["images"]["fixed_height"]["url"]
             ),
+            onTap: (){
+              Navigator.push(_, MaterialPageRoute(builder: (_)=>GifPage(snapshot.data["data"][posicao])));
+            },
+            onLongPress: (){
+              Share.share(snapshot.data["data"][posicao]["images"]["fixed_height"]["url"]);
+            },
           );
         }else{
            return Container(
