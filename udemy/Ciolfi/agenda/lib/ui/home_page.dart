@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:agenda/helpers/contat_helper.dart';
 import 'package:agenda/ui/contact_page.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -99,9 +100,64 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: () {
-        _showContactPage(contato: contacto);
+        _showOptions(context, contacto);
       },
     );
+  }
+
+  _showOptions(BuildContext context, Contact contact) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return BottomSheet(
+              onClosing: () {},
+              builder: (BuildContext context) {
+                return Container(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "Ligar",
+                          style: TextStyle(color: Colors.red, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          launch("tel:${contact.phone}");
+                          Navigator.pop(context);
+                        },
+                      ),
+                      Divider(),
+                      FlatButton(
+                        child: Text(
+                          "Editar",
+                          style: TextStyle(color: Colors.red, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _showContactPage(contato: contact);
+                        },
+                      ),
+                      Divider(),
+                      FlatButton(
+                        child: Text(
+                          "Excluir",
+                          style: TextStyle(color: Colors.red, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          helper.delte(contact.id);
+                          setState(() {
+                            _contacts.removeAt(_contacts.indexOf(contact));
+                            Navigator.pop(context);  
+                          });
+                          
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              });
+        });
   }
 
   void _showContactPage({Contact contato}) async {

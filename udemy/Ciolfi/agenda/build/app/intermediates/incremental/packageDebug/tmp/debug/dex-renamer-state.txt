@@ -1,0 +1,4 @@
+#Thu Jan 09 14:03:25 GFT 2020
+base.0=C\:\\Users\\erasmo sena\\projetos\\flutter\\public\\udemy\\Ciolfi\\agenda\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
