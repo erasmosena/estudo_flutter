@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
+
+
 class ContactPage extends StatefulWidget {
   final Contact contact;
 
@@ -46,6 +48,7 @@ class _ContactPageState extends State<ContactPage> {
             backgroundColor: Colors.red,
             title: Text(_editedContact?.name ?? "Novo Contato"),
             centerTitle: true,
+            
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(10),
@@ -65,7 +68,7 @@ class _ContactPageState extends State<ContactPage> {
                                   ? FileImage(File(_editedContact.img))
                                   : AssetImage("images/person.png"))),
                     ),
-                    onTap: _getImage,
+                    onTap: _showOptionsImageCapture,
                   ),
                   Divider(),
                   TextFormField(
@@ -123,11 +126,9 @@ class _ContactPageState extends State<ContactPage> {
         ));
   }
 
-  _getImage() async {
-    _showOptionsImageCapture(context);
-  }
+  
 
-  Future<ImageSource> _showOptionsImageCapture(BuildContext context) async {
+  _showOptionsImageCapture() async {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
@@ -147,7 +148,8 @@ class _ContactPageState extends State<ContactPage> {
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
                                 "Camera",
-                                style: TextStyle(color: Colors.red, fontSize: 20),
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 20),
                               ),
                             )
                           ],
@@ -175,7 +177,8 @@ class _ContactPageState extends State<ContactPage> {
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
                                 "Galeria",
-                                style: TextStyle(color: Colors.red, fontSize: 20),
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 20),
                               ),
                             ),
                           ],
