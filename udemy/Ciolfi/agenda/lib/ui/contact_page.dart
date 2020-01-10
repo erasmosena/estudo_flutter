@@ -4,6 +4,7 @@ import 'package:agenda/helpers/contat_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 
 
@@ -17,6 +18,8 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
+  var maskFormatter = new MaskTextInputFormatter(mask: '+## (##) #####-####', filter: { "#": RegExp(r'[0-9]') });
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _userEdited = false;
 
@@ -99,6 +102,7 @@ class _ContactPageState extends State<ContactPage> {
                   ),
                   Divider(),
                   TextFormField(
+                      inputFormatters: [maskFormatter],
                       validator: (value) {
                         return value.isEmpty ? "Campo Requerido" : null;
                       },
