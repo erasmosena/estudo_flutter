@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">540257681761-kbi0coknjk16411mvga1ucdh2v474kjp.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://chat-72788.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">540257681761</string>
+    <string name="google_api_key" translatable="false">AIzaSyDMlF9Ko9KWGIMDMVq98aU-rFNTgDzSZ_4</string>
+    <string name="google_app_id" translatable="false">1:540257681761:android:422e82d1decc49964fc520</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDMlF9Ko9KWGIMDMVq98aU-rFNTgDzSZ_4</string>
+    <string name="google_storage_bucket" translatable="false">chat-72788.appspot.com</string>
+    <string name="project_id" translatable="false">chat-72788</string>
+</resources>
