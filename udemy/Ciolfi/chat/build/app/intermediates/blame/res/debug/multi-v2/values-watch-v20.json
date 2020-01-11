@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\erasmo sena\\projetos\\flutter\\public\\udemy\\Ciolfi\\chat\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "/home/erasmo/dev/estudo_flutter/udemy/Ciolfi/chat/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\erasmo sena\\.gradle\\caches\\transforms-2\\files-2.1\\04c830f10f9e2e01a970ba37a8703483\\jetified-play-services-auth-16.0.1\\res\\values-watch-v20\\values.xml",
+                    "source": "/home/erasmo/.gradle/caches/transforms-2/files-2.1/7e2d282f5b12a5aaca8e4831c1ddbb92/jetified-play-services-auth-16.0.1/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

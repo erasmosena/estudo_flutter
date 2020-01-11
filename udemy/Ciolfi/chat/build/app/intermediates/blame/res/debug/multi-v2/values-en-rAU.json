@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\erasmo sena\\projetos\\flutter\\public\\udemy\\Ciolfi\\chat\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rAU\\values-en-rAU.xml",
+            "outputFile": "/home/erasmo/dev/estudo_flutter/udemy/Ciolfi/chat/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rAU/values-en-rAU.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\erasmo sena\\.gradle\\caches\\transforms-2\\files-2.1\\15cbd287cb9acae11e56b4d22da52725\\core-1.0.2\\res\\values-en-rAU\\values-en-rAU.xml",
+                    "source": "/home/erasmo/.gradle/caches/transforms-2/files-2.1/15cbd287cb9acae11e56b4d22da52725/core-1.0.2/res/values-en-rAU/values-en-rAU.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

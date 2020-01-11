@@ -1,27 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\erasmo sena\\projetos\\flutter\\public\\udemy\\Ciolfi\\chat\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sq\\values-sq.xml",
+            "outputFile": "/home/erasmo/dev/estudo_flutter/udemy/Ciolfi/chat/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\erasmo sena\\.gradle\\caches\\transforms-2\\files-2.1\\15cbd287cb9acae11e56b4d22da52725\\core-1.0.2\\res\\values-sq\\values-sq.xml",
+                    "source": "/home/erasmo/.gradle/caches/transforms-2/files-2.1/0db743cfece23f30ee803394f0a9d092/jetified-play-services-basement-17.0.0/res/values-sq/values.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "187",
+                        "endOffsets": "434"
                     },
                     "to": {
-                        "startLines": "20",
+                        "startLines": "10",
                         "startColumns": "4",
-                        "startOffsets": "2942",
-                        "endColumns": "100",
-                        "endOffsets": "3038"
+                        "startOffsets": "1324",
+                        "endColumns": "187",
+                        "endOffsets": "1507"
                     }
                 },
                 {
-                    "source": "C:\\Users\\erasmo sena\\.gradle\\caches\\transforms-2\\files-2.1\\3f6f73e814fbd5df6c30de1e0f57f424\\play-services-base-17.1.0\\res\\values-sq\\values.xml",
+                    "source": "/home/erasmo/.gradle/caches/transforms-2/files-2.1/3f6f73e814fbd5df6c30de1e0f57f424/play-services-base-17.1.0/res/values-sq/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,20 +38,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\erasmo sena\\.gradle\\caches\\transforms-2\\files-2.1\\329a17af791970f827ee6aaf59d85730\\jetified-play-services-basement-17.0.0\\res\\values-sq\\values.xml",
+                    "source": "/home/erasmo/.gradle/caches/transforms-2/files-2.1/15cbd287cb9acae11e56b4d22da52725/core-1.0.2/res/values-sq/values-sq.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "187",
-                        "endOffsets": "434"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "10",
+                        "startLines": "20",
                         "startColumns": "4",
-                        "startOffsets": "1324",
-                        "endColumns": "187",
-                        "endOffsets": "1507"
+                        "startOffsets": "2942",
+                        "endColumns": "100",
+                        "endOffsets": "3038"
                     }
                 }
             ]
