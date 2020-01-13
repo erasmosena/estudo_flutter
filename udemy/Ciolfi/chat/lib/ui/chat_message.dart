@@ -37,7 +37,8 @@ class ChatMessage extends StatelessWidget {
             children: <Widget>[
               Text(
                 data["senderName"],
-                style: TextStyle(
+                textAlign: TextAlign.right,
+                style: TextStyle(                  
                   fontSize: 13,
                   fontWeight: FontWeight.w500
                 ),
@@ -70,14 +71,15 @@ class ChatMessage extends StatelessWidget {
 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                msg,
+                
                 Text(
                   data["senderName"],
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500
                   ),
-                )
+                ),
+                msg,
               ],
             ),
           ),
