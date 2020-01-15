@@ -14,7 +14,6 @@ class CategoryTab extends StatelessWidget {
         } else {
           var divided = ListTile.divideTiles(
             tiles: snapshot.data.documents.map((doc){
-              
               return CategoryTile(doc);
             }).toList()
             ,color: Colors.grey[500]
