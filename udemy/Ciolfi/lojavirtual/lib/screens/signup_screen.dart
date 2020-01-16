@@ -59,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: _passController,
                     validator: (text) {
-                      if (text.isEmpty || text.length < 6)
+                      if (text.isEmpty || text.length < 4)
                         return "Senha inválido";
                     },
                     decoration: InputDecoration(hintText: "Senha"),
@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 44,
                     child: RaisedButton(
                       child: Text(
-                        "Entrar",
+                        "Criar Conta",
                         style: TextStyle(fontSize: 18),
                       ),
                       textColor: Colors.white,
@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           model.signUp(
                               userData: userData,
                               pass: _passController.text,
-                              onSucess: _onSucess,
+                              onSuccess: _onSuccess,
                               onFail: _onFail);
                         }
                       },
@@ -111,9 +111,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ));
   }
 
-  void _onSucess() {
+  void _onSuccess() {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
-        content: Text("Usuário criado com sucesso."),
+        content: Text("Usuário criado com Successo."),
         backgroundColor: Theme.of(context).primaryColor,
         duration: Duration(seconds: 2)));
     Future.delayed(Duration(seconds: 2)).then((_) {
