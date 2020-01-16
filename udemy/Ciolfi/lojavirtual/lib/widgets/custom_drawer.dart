@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lojavirtual/models/user_model.dart';
+import 'package:lojavirtual/screens/login_screen.dart';
 import 'package:lojavirtual/tiles/drawer_tile.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class CustomDrawer extends StatelessWidget {
-
-  final PageController pageController ;
+  final PageController pageController;
   CustomDrawer(this.pageController);
 
   @override
@@ -40,34 +42,46 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                         bottom: 0,
                         left: 0,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "Olá,",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            GestureDetector(
-                              onTap: (){},
-                              child: Text(
-                                "Entre ou cadastre-se",
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ],
+                        child: ScopedModelDescendant<UserModel>(
+                          builder: (context, child, model) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "Olá, ${model.isLoggedIn()?model.userData["name"]:""}",
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    !model.isLoggedIn()
+                                    ?Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoginScreen()))
+                                    :model.signOut();
+                                  },
+                                  child: Text(
+                                    !model.isLoggedIn()?"Entre ou cadastre-se >":"Sair",
+                                    style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                )
+                              ],
+                            );
+                          },
                         )),
-                    
                   ],
                 ),
               ),
               Divider(),
-              DrawerTile(Icons.home,"Inicio",pageController,0),
-              DrawerTile(Icons.list,"Produtos",pageController,1),
-              DrawerTile(Icons.location_on, "Encontre uma loja",pageController,2),
-              DrawerTile(Icons.playlist_add_check,"Pedidos",pageController,3)
+              DrawerTile(Icons.home, "Inicio", pageController, 0),
+              DrawerTile(Icons.list, "Produtos", pageController, 1),
+              DrawerTile(
+                  Icons.location_on, "Encontre uma loja", pageController, 2),
+              DrawerTile(Icons.playlist_add_check, "Pedidos", pageController, 3)
             ],
           )
         ],

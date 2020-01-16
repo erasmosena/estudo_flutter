@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lojavirtual/models/product_model.dart';
+import 'package:lojavirtual/helpers/product_model.dart';
 import 'package:lojavirtual/tiles/product_grid_tile.dart';
 import 'package:lojavirtual/tiles/product_list_tile.dart';
 

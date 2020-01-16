@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lojavirtual/models/product_model.dart';
+import 'package:lojavirtual/helpers/product_model.dart';
 import 'package:lojavirtual/screens/product_screen.dart';
 
 class ProductGridTile extends StatelessWidget {
