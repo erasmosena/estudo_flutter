@@ -10,6 +10,12 @@ class UserModel extends Model {
 
   bool isLoading = false;
 
+  @override
+  void addListener(VoidCallback listener){
+    super.addListener(listener);
+    _loadCurrentUser();
+  }
+
   void signUp(
       {@required Map<String, dynamic> userData,
       @required String pass,
@@ -72,9 +78,9 @@ class UserModel extends Model {
 
     _auth
         .signInWithEmailAndPassword(email: email, password: pass)
-        .then((user) {
+        .then((user) async {
           firebaseUser = user.user ; 
-          _loadCurrentUser();
+          await _loadCurrentUser();
            onSuccess();
 
         })
@@ -87,7 +93,9 @@ class UserModel extends Model {
         });
   }
 
-  void recoverPass() {}
+  void recoverPass({@required String email}) {
+    
+  }
 
   bool isLoggedIn() {
     return firebaseUser != null;

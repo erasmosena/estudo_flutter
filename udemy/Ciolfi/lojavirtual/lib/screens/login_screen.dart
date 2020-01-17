@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/models/user_model.dart';
+import 'package:lojavirtual/screens/recover_screen.dart';
 import 'package:lojavirtual/screens/signup_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 class LoginScreen extends StatefulWidget {
@@ -72,7 +73,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => RecoverScreen()));
+                      },
                       child: Text(
                         "Esqueci minha senha",
                         textAlign: TextAlign.right,
