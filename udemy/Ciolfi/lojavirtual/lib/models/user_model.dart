@@ -93,7 +93,17 @@ class UserModel extends Model {
         });
   }
 
-  void recoverPass({@required String email}) {
+  void recoverPass({
+      @required String email,
+      @required VoidCallback onSuccess,
+      @required VoidCallback onFail}) {
+
+        _auth.sendPasswordResetEmail(email:email).then((data){
+          onSuccess();
+        }).catchError((e){
+          onFail();
+          print(e.toString());
+        });
     
   }
 
