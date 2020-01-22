@@ -48,14 +48,18 @@ class CategoryScree extends StatelessWidget {
                       ),
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index){
-                        return ProductGridTile(Product.fromDocument(snapshot.data.documents[index]));
+                        Product data = Product.fromDocument(snapshot.data.documents[index]);
+                        data.category = this.snapshot.documentID;
+                        return ProductGridTile(data);
                       },
                     ),
                     ListView.builder(
                       padding: const EdgeInsets.all(4),
                       itemCount: snapshot.data.documents.length,
                       itemBuilder: (context, index){
-                        return ProductListTile(Product.fromDocument(snapshot.data.documents[index]));
+                        Product data = Product.fromDocument(snapshot.data.documents[index]);
+                        data.category = this.snapshot.documentID;
+                        return ProductListTile(data);
                       },
                     )
                   ],

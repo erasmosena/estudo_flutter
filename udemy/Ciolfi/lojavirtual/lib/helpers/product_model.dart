@@ -21,4 +21,13 @@ class Product {
     images = snapshot.data["images"];
     sizes = snapshot.data["sizes"];
   }
+
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> mapa = new Map();
+    mapa["title"] = title;
+    mapa["description"] = description;
+    mapa["price"] = price;
+    return mapa;
+  }
+
 }

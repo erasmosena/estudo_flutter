@@ -10,6 +10,7 @@ class CartProduct {
 
   Product produto;
 
+  CartProduct();
   CartProduct.fromDocument(DocumentSnapshot documentSnapshot) {
     id = documentSnapshot.documentID;
     category = documentSnapshot.data["category"];
@@ -24,7 +25,8 @@ class CartProduct {
     mapa["idProduto"] = idProduto;
     mapa["qtde"] = qtde;
     mapa["tamanho"] = tamanho;
-    mapa["produto"] = produto;
+    //mapa["produto"] = produto.toMap();
     return mapa;
   }
+  
 }
