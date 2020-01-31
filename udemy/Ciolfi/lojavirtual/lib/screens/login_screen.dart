@@ -111,15 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onSuccess(){
-  //  _scaffoldKey.currentState.showSnackBar(SnackBar(
-  //       content: Text("Bem vindo de volta."),
-  //       backgroundColor: Theme.of(context).primaryColor,
-  //       duration: Duration(seconds: 2)));
-  //   Future.delayed(Duration(seconds: 2)).then((_) {
-      
-  //   });
     Navigator.of(context).pop();
   }
+  
   void _onFail(){
     _scaffoldKey.currentState.showSnackBar(SnackBar(
         content: Text("Falha ao fazer login."),
