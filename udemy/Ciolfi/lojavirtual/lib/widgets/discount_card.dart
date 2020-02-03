@@ -9,7 +9,7 @@ class DiscountCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: ExpansionTile(
         title: Text(
-          "Cupom de Disconto",
+          "Cupom de Descono",
           textAlign: TextAlign.start,
           style: TextStyle(
             fontWeight: FontWeight.w500,
