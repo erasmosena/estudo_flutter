@@ -25,7 +25,7 @@ class CartProduct {
     mapa["idProduto"] = idProduto;
     mapa["qtde"] = qtde;
     mapa["tamanho"] = tamanho;
-    //mapa["produto"] = produto.toMap();
+    mapa["produto"] = produto.toMap();
     return mapa;
   }
   
