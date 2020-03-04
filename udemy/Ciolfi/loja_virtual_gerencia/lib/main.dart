@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loja_virtual_gerencia/login/screens/login_screen.dart';
+import 'package:loja_virtual_gerencia/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
 
