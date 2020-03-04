@@ -16,7 +16,7 @@ class GrowHideTransition extends StatelessWidget {
         builder: (_, item) {
           
           return Opacity(
-            opacity: opacityTween.evaluate(animation).clamp(0.1, 1),
+            opacity: opacityTween.evaluate(animation).clamp(0.1, 1.0),
             child: Container(
               height: sizeTween.evaluate(animation),
               width: sizeTween.evaluate(animation),
