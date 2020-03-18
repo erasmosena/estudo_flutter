@@ -27,6 +27,6 @@ class LoginValidators {
     if (regExp.hasMatch(senha))
       sink.add(senha);
     else
-      sink.addError("Insira uma senha com 4 ou mais caracteres(letras e números)");
+      sink.addError("4 ou mais caracteres(letras e números)");
   });
 }

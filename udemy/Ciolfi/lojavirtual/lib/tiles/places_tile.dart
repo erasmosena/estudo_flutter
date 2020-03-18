@@ -65,7 +65,7 @@ class PlaceTileDoc extends StatelessWidget {
               )
             ],
           )
-        ],
+        ], 
       ),
       
     );
