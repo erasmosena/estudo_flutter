@@ -34,12 +34,12 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     platform.setMethodCallHandler((methodCall){
       if(methodCall.method == 'touch'){
-
         setState(() {
           count += 1; 
         });
       }
     });
+    
     
   }  
 
@@ -80,7 +80,9 @@ class _HomePageState extends State<HomePage> {
               RaisedButton(
                 child: Text("Verify"),
                 onPressed: () {
-                  platform.invokeListMethod("verify");
+                  platform.invokeMethod("isShowing").then((isShowing){
+                    print(isShowing);
+                  });
                 },
               ),
             ],
