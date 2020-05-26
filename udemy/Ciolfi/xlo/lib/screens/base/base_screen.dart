@@ -15,7 +15,8 @@ class _BaseScreenState extends State<BaseScreen> {
   final PageController _pageController = PageController();
 
   DrawerBloc _drawerBloc ;
-  StreamSubscription drawerSubscription ;
+  StreamSubscription _drawerSubscription ;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -24,8 +25,8 @@ class _BaseScreenState extends State<BaseScreen> {
     if( drawerBloc != _drawerBloc){
       _drawerBloc = drawerBloc;
 
-      drawerSubscription?.cancel();
-      drawerSubscription = _drawerBloc.outPage.listen((page) { 
+      _drawerSubscription?.cancel();
+      _drawerSubscription = _drawerBloc.outPage.listen((page) { 
         _pageController.jumpToPage(page);
        });
     }
@@ -33,7 +34,7 @@ class _BaseScreenState extends State<BaseScreen> {
 
   @override
   void dispose() {
-    drawerSubscription.cancel();
+    _drawerSubscription.cancel();
     super.dispose(); 
   }
 

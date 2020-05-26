@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:xlo/blocs/drawer_bloc.dart';
 import 'package:xlo/screens/base/base_screen.dart';
 
+
+import 'blocs/home_bloc.dart';
 import 'screens/home/home_screen.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +17,10 @@ class MyApp extends StatelessWidget {
         Provider<DrawerBloc>(
           create: (_) => DrawerBloc(),
           dispose: (context, value) => value.dispose(),
+        ),
+        Provider<HomeBloc>(
+          create: (_) => HomeBloc(),
+          dispose: (context, value) => value.dispose(),
         )
       ],
       child: MaterialApp(
@@ -23,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomeScreen()),
+          home: BaseScreen()),
     );
   }
 }
