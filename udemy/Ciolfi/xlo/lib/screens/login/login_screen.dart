@@ -3,13 +3,15 @@ import 'package:xlo/blocs/login/field_state.dart';
 import 'package:xlo/blocs/login/login_bloc.dart';
 import 'package:xlo/screens/login/widget/login_button.dart';
 
+import 'widget/facebook_button.dart';
+import 'widget/or_divider.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   LoginBloc _loginBloc = LoginBloc();
 
   @override
@@ -22,6 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
+                    FacebookButton(_loginBloc),
+                    OrDivider(),
                     Padding(
                       padding: const EdgeInsets.only(top: 20, bottom: 11),
                       child: Text(
@@ -80,11 +84,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     StreamBuilder<FieldState>(
                       initialData: FieldState(),
-                      stream: _loginBloc.outSenha,
+                      stream: _loginBloc.outPassword,
                       builder: (context, snapshot) {
                         return TextField(
                             enabled: snapshot.data.enabled,
-                            onChanged:  _loginBloc.changedPassword,
+                            onChanged: _loginBloc.changedPassword,
                             obscureText: true,
                             autocorrect: false,
                             decoration: InputDecoration(
@@ -92,7 +96,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: const OutlineInputBorder()));
                       },
                     ),
-                    LoginButton(),
+                    LoginButton(_loginBloc),
+                    Divider(color: Colors.grey),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text('Não tem uma conta? ',
+                                style: TextStyle(fontSize: 16)),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text('Cadastre-se',
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.blue,
+                                      fontSize: 16)),
+                            )
+                          ],
+                        ))
                   ])),
         ));
   }
