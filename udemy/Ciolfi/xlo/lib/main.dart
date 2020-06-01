@@ -5,7 +5,6 @@ import 'package:xlo/screens/base/base_screen.dart';
 
 
 import 'blocs/home_bloc.dart';
-import 'screens/home/home_screen.dart';
 
 void main() => runApp(MyApp());
 

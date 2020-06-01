@@ -14,14 +14,19 @@ class LoginButton extends StatelessWidget {
       height: 50,
       child: StreamBuilder<ButtonState>(
         stream: loginBloc.outLoginButton,
-        initialData: ButtonState(enabled: false,loading: false),
+        initialData: ButtonState(enabled: false, loading: false),
         builder: (context, snapshot) {
           return RaisedButton(
             color: Colors.pink,
             elevation: 0,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-            onPressed: snapshot.data.enabled ? loginBloc.loginWithEmail : null,
+            onPressed: snapshot.data.enabled
+                ? () async {
+                    final bool success = await loginBloc.loginWithEmail();
+                    if( success ) Navigator.of(context).pop();
+                  }
+                : null,
             disabledColor: Colors.pink.withAlpha(150),
             child: snapshot.data.loading
                 ? CircularProgressIndicator(

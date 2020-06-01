@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xlo/blocs/login/field_state.dart';
 import 'package:xlo/blocs/login/login_bloc.dart';
 import 'package:xlo/screens/login/widget/login_button.dart';
+import 'package:xlo/screens/signup/signup_screen.dart';
 
 import 'widget/facebook_button.dart';
 import 'widget/or_divider.dart';
@@ -106,7 +107,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             const Text('Não tem uma conta? ',
                                 style: TextStyle(fontSize: 16)),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => SignupScreen()));
+                              },
                               child: Text('Cadastre-se',
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,

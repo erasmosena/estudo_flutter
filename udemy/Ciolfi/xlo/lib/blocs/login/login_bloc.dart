@@ -38,16 +38,18 @@ class LoginBloc with LoginValidator {
   Function(String) get changedEmail => _emailController.sink.add;
   Function(String) get changedPassword => _passwordController.sink.add;
 
-  void loginWithEmail() async {
+  Future<bool> loginWithEmail() async {
     _stateController.add(LoginBlocState(LoginState.LOADING));
     await Future.delayed(Duration(seconds: 3));
     _stateController.add(LoginBlocState(LoginState.IDLE));
+    return true;
   }
 
-  void loginWithFacebook() async {
+  Future<bool> loginWithFacebook() async {
     _stateController.add(LoginBlocState(LoginState.LOADING_FACE));
     await Future.delayed(Duration(seconds: 3));
     _stateController.add(LoginBlocState(LoginState.IDLE));
+    return true;
   }
 
   void dispose() {
