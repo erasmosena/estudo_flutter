@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xlo/blocs/login/field_state.dart';
 
 class FieldTitle extends StatelessWidget {
   const FieldTitle({this.title, this.subTitle});
