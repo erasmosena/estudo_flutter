@@ -1,6 +1,66 @@
 import 'package:flutter/material.dart';
 
 class PasswordField extends StatelessWidget {
+  final FormFieldSetter<String> onSaved;
+  final bool enabled ;
+  PasswordField({this.onSaved, this.enabled});
+  
+  @override
+  Widget build(BuildContext context) {
+    return FormField<String>(
+      validator: (text) {
+        if (text.isEmpty || _calcScorePass(text) < 3) {
+          return 'Senha inválida';
+        }
+        return null;
+      },
+      initialValue: '',
+      onSaved: onSaved,
+      builder: (state) {
+        int score = _calcScorePass(state.value);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextField(
+              enabled: enabled,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true,
+              onChanged: state.didChange,
+            ),
+            state.value.isNotEmpty
+                ? Container(
+                    margin: const EdgeInsets.only(top: 6),
+                    height: 8,
+                    child: Row(
+                      children: <Widget>[
+                        _buildBar(0, state.value),
+                        _buildBar(1, state.value),
+                        _buildBar(2, state.value),
+                        _buildBar(3, state.value),
+                        _buildBar(4, state.value),
+                      ],
+                    ),
+                  )
+                : Container(),
+            Padding(
+              padding: const EdgeInsets.only(top: 6, left: 10),
+              child: state.value.isNotEmpty || state.hasError
+                  ? Text(state.value.isNotEmpty ? _getText(score): state.errorText,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(color: _getColor(score)))
+                  : Container(),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+
+  // Utils 
+
   Widget _buildBar(int n, String pass) {
     final int level = _calcScorePass(pass);
     return Expanded(
@@ -66,54 +126,4 @@ class PasswordField extends StatelessWidget {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return FormField<String>(
-      validator: (text) {
-        if (text.isEmpty || _calcScorePass(text) < 3) {
-          return 'Senha inválida';
-        }
-        return null;
-      },
-      initialValue: '',
-      builder: (state) {
-        int score = _calcScorePass(state.value);
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-              ),
-              obscureText: true,
-              onChanged: state.didChange,
-            ),
-            state.value.isNotEmpty
-                ? Container(
-                    margin: const EdgeInsets.only(top: 6),
-                    height: 8,
-                    child: Row(
-                      children: <Widget>[
-                        _buildBar(0, state.value),
-                        _buildBar(1, state.value),
-                        _buildBar(2, state.value),
-                        _buildBar(3, state.value),
-                        _buildBar(4, state.value),
-                      ],
-                    ),
-                  )
-                : Container(),
-            Padding(
-              padding: const EdgeInsets.only(top: 6, left: 10),
-              child: state.value.isNotEmpty || state.hasError
-                  ? Text(state.hasError ? state.errorText : _getText(score),
-                      textAlign: TextAlign.start,
-                      style: TextStyle(color: _getColor(score)))
-                  : Container(),
-            )
-          ],
-        );
-      },
-    );
-  }
 }
