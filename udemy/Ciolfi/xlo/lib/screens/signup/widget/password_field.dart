@@ -9,7 +9,7 @@ class PasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormField<String>(
       validator: (text) {
-        if (text.isEmpty || _calcScorePass(text) < 3) {
+        if (text.isEmpty || _calcScorePass(text) < 2) {
           return 'Senha inválida';
         }
         return null;

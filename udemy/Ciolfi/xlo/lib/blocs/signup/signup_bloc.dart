@@ -9,9 +9,9 @@ class SignUpBloc {
 
   Stream<SignUpBlocState> get outState => _stateController.stream;
 
-  void signUp() {
+  void signUp() async  {
     _stateController.add(SignUpBlocState(SignUpState.LOADING));
-    Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 5));
     _stateController.add(SignUpBlocState(SignUpState.IDLE));
   }
 

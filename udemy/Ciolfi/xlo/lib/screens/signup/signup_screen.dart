@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:xlo/blocs/signup/signup_bloc.dart';
 import 'package:xlo/blocs/signup/signup_bloc_state.dart';
 import 'package:xlo/screens/signup/widget/field_title.dart';
@@ -37,6 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
         key: _key,
         child: StreamBuilder<SignUpBlocState>(
             stream: _signUpBloc.outState,
+            initialData: SignUpBlocState(SignUpState.IDLE),
             builder: (context, snapshot) {
               return ListView(
                 padding:
@@ -95,7 +95,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       disabledColor: Colors.pink.withAlpha(150),
                       child: snapshot.data.state == SignUpState.LOADING
                           ? CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
                             )
                           : Text('Cadastre-se',
                               style: TextStyle(
@@ -105,9 +106,32 @@ class _SignupScreenState extends State<SignupScreen> {
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25)),
-                      onPressed:_signUp,
+                      onPressed: snapshot.data.state != SignUpState.LOADING
+                          ? _signUp
+                          : null,
                     ),
-                  )
+                  ),
+                  Divider(
+                    color: Colors.grey,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const Text(
+                          'Já tem uma conta?',
+                          style: TextStyle(fontSize: 16),
+                          
+                        ),GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Entrar', style:TextStyle(decoration:TextDecoration.underline, color: Colors.blue, fontSize: 16)),
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               );
             }),
