@@ -1,4 +1,7 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:xlo/api/api_postal_code.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
 import 'package:xlo/screens/create/widget/images_field.dart';
 
@@ -52,10 +55,35 @@ class _CreateScreenState extends State<CreateScreen> {
                 if (text.trim().length > 10) return 'Descrição muito curta';
                 return null;
               },
-              onSaved: (d){
-                
+              onSaved: (d) {},
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Preço *',
+                labelStyle: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    color: Colors.grey,
+                    fontSize: 18),
+                contentPadding: const EdgeInsets.fromLTRB(10, 10, 12, 10),
+              ),
+              keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true, signed: false),
+              inputFormatters: [
+                WhitelistingTextInputFormatter.digitsOnly,
+                RealInputFormatter(centavos: true),
+              ],
+              validator: (text) {
+                if (text.trim().isEmpty) return 'Campo obrigatório';
+                if (double.parse(text) == null)
+                  return 'Utilize valores válidos';
+                return null;
+              },
+              onSaved: (price){
+
               },
             ),
+
+
             Container(
                 child: RaisedButton(
               color: Colors.pink,
@@ -65,6 +93,7 @@ class _CreateScreenState extends State<CreateScreen> {
                       fontWeight: FontWeight.w500,
                       fontSize: 18)),
               onPressed: () {
+                getAddressFromAPI("49.030-210");
                 if (_formKey.currentState.validate()) {}
               },
             ))
