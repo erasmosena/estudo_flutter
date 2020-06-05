@@ -20,6 +20,7 @@ class _BaseScreenState extends State<BaseScreen> {
 
   @override
   void didChangeDependencies() {
+    
     super.didChangeDependencies();
 
     final DrawerBloc drawerBloc = Provider.of<DrawerBloc>(context);

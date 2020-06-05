@@ -3,8 +3,8 @@ import 'package:xlo/models/address.dart';
 import 'package:xlo/repositories/api_error.dart';
 import 'package:xlo/repositories/api_response.dart';
 
-Future<ApiResponse> getAddressFromAPI(String postalCode) async {
-  String codeSanitized = postalCode.replaceAll(".", "").replaceAll("-", "");
+Future<ApiResponse> getAddressFromAPI(String cep) async {
+  String codeSanitized = cep.replaceAll(".", "").replaceAll("-", "");
   final String endpoint = 'http://viacep.com.br/ws/$codeSanitized/json/';
 
   try {
@@ -15,7 +15,9 @@ Future<ApiResponse> getAddressFromAPI(String postalCode) async {
     }
 
     Address endereco = Address.fromJson(response.data);
-    print(endereco);
+    return ApiResponse.success(
+      result: endereco
+    );
   } on DioError catch (e) {
     return ApiResponse.error(
         error: ApiError(
