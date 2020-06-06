@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:xlo/api/api_cep.dart';
 import 'package:xlo/common/cep_field.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
+import 'package:xlo/helpers/formatField.dart';
+import 'package:xlo/screens/create/widget/hide_phone_widget.dart';
 import 'package:xlo/screens/create/widget/images_field.dart';
 
 class CreateScreen extends StatefulWidget {
@@ -68,7 +70,7 @@ class _CreateScreenState extends State<CreateScreen> {
                 contentPadding: const EdgeInsets.fromLTRB(10, 10, 12, 10),
               ),
               onSaved: (a){
-
+                print(a);
               },
             ),
             TextFormField(
@@ -87,8 +89,9 @@ class _CreateScreenState extends State<CreateScreen> {
                 RealInputFormatter(centavos: true),
               ],
               validator: (text) {
+                
                 if (text.trim().isEmpty) return 'Campo obrigatório';
-                if (double.parse(text) == null)
+                if (BigInt.parse(getSanitizedText(text)) == null)
                   return 'Utilize valores válidos';
                 return null;
               },
@@ -96,8 +99,12 @@ class _CreateScreenState extends State<CreateScreen> {
 
               },
             ),
+  
+            HidePhoneWidget(
+              onSaved: (h){
 
-
+              }, initialValue: false,
+            ),
             Container(
                 child: RaisedButton(
               color: Colors.pink,
@@ -107,7 +114,9 @@ class _CreateScreenState extends State<CreateScreen> {
                       fontWeight: FontWeight.w500,
                       fontSize: 18)),
               onPressed: () {
-                if (_formKey.currentState.validate()) {}
+                if (_formKey.currentState.validate()) {
+
+                }
               },
             ))
           ],
