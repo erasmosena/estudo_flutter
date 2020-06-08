@@ -14,7 +14,7 @@ Future<ApiResponse> getAddressFromAPI(String cep) async {
           error: ApiError(code: -1, message: 'CEP Inválido'));
     }
 
-    Address endereco = Address.fromJson(response.data);
+    Address endereco = Address.fromMap(response.data);
     return ApiResponse.success(
       result: endereco
     );

@@ -18,14 +18,15 @@ class _XloAppState extends State<XloApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        Provider<HomeBloc>(
+          create: (_) => HomeBloc(),
+          dispose: (context, value) => value.dispose(),
+        ),
         Provider<DrawerBloc>(
           create: (_) => DrawerBloc(),
           dispose: (context, value) => value.dispose(),
         ),
-        Provider<HomeBloc>(
-          create: (_) => HomeBloc(),
-          dispose: (context, value) => value.dispose(),
-        )
+        
       ],
       child: MaterialApp(
           title: 'XLO',

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Address {
   String cep;
   String logradouro;
@@ -9,44 +11,54 @@ class Address {
   String ibge;
   String gia;
 
-  Address(
-      {this.cep,
-      this.logradouro,
-      this.complemento,
-      this.bairro,
-      this.localidade,
-      this.uf,
-      this.unidade,
-      this.ibge,
-      this.gia});
+  Address({
+    this.cep,
+    this.logradouro,
+    this.complemento,
+    this.bairro,
+    this.localidade,
+    this.uf,
+    this.unidade,
+    this.ibge,
+    this.gia,
+  });
 
-  Address.fromJson(Map<String, dynamic> json) {
-    cep = json['cep'];
-    logradouro = json['logradouro'];
-    complemento = json['complemento'];
-    bairro = json['bairro'];
-    localidade = json['localidade'];
-    uf = json['uf'];
-    unidade = json['unidade'];
-    ibge = json['ibge'];
-    gia = json['gia'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cep'] = this.cep;
-    data['logradouro'] = this.logradouro;
-    data['complemento'] = this.complemento;
-    data['bairro'] = this.bairro;
-    data['localidade'] = this.localidade;
-    data['uf'] = this.uf;
-    data['unidade'] = this.unidade;
-    data['ibge'] = this.ibge;
-    data['gia'] = this.gia;
-    return data;
-  }
   @override
   String toString() {
-    return '$logradouro${this.complemento.isNotEmpty?this.complemento+", ":""}, $bairro - $localidade / $uf  $cep' ;
+    return '$logradouro${this.complemento.isNotEmpty ? this.complemento + ", " : ""}, $bairro - $localidade / $uf  $cep';
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'cep': cep,
+      'logradouro': logradouro,
+      'complemento': complemento,
+      'bairro': bairro,
+      'localidade': localidade,
+      'uf': uf,
+      'unidade': unidade,
+      'ibge': ibge,
+      'gia': gia,
+    };
+  }
+
+  static Address fromMap(Map<String, dynamic> map) {
+    if (map == null) return null;
+
+    return Address(
+      cep: map['cep'],
+      logradouro: map['logradouro'],
+      complemento: map['complemento'],
+      bairro: map['bairro'],
+      localidade: map['localidade'],
+      uf: map['uf'],
+      unidade: map['unidade'],
+      ibge: map['ibge'],
+      gia: map['gia'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  static Address fromJson(String source) => fromMap(json.decode(source));
 }

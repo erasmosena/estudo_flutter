@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:xlo/blocs/home_bloc.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
+import 'package:xlo/models/anuncio_view.dart';
+import 'package:xlo/screens/home/widget/product_tile.dart';
+import 'package:xlo/screens/home/widget/product_wait_tile.dart';
 import 'package:xlo/screens/home/widget/search_dialog.dart';
 import 'package:xlo/screens/home/widget/top_bar.dart';
 
@@ -47,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
-                  onTap: () => {_openSearch(snapshot.data)},
+                  onTap: () => _openSearch(snapshot.data),
                 );
               }
             }),
@@ -55,30 +59,51 @@ class _HomeScreenState extends State<HomeScreen> {
           StreamBuilder<String>(
             stream: _homeBloc.outSearch,
             initialData: "",
-              builder: (context, snapshot) {
-                if (snapshot.data.isEmpty) {
-                  return IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      _openSearch("");
-                    },
-                  );
-                } else {
-                  return IconButton(
-                    icon: Icon(Icons.close),
-                    onPressed: () {
-                      _homeBloc.setSearch("");
-                    },
-                  );
-                }
-              },
-              )
+            builder: (context, snapshot) {
+              if (snapshot.data.isEmpty) {
+                return IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    _openSearch("");
+                  },
+                );
+              } else {
+                return IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    _homeBloc.setSearch("");
+                  },
+                );
+              }
+            },
+          )
         ],
       ),
       drawer: CustomDrawer(),
       body: Column(
         children: <Widget>[
           TopBar(),
+          Expanded(
+              child: StreamBuilder<List<AnuncioView>>(
+                  stream: _homeBloc.outAnuncio,
+                  builder: (context, snapshot) {
+                    if (snapshot.data == null) {
+                      return ListView.builder(
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          return ProductWaitTile();
+                        },
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        if (snapshot.connectionState == ConnectionState.waiting)
+                          return ProductWaitTile();
+                        return ProductTile(anuncio: snapshot.data[index]);
+                      },
+                    );
+                  }))
         ],
       ),
     );

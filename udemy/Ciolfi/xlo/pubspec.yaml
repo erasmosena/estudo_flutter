@@ -47,6 +47,7 @@ dependencies:
   location_permissions: ^2.0.5
   dio:  ^3.0.9
   wiredash: ^0.0.1+1
+  shimmer: ^1.1.1
 
   #habilitar depois
   #flutter_facebook_login: ^3.0.0
