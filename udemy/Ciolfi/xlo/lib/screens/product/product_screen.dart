@@ -5,6 +5,7 @@ import 'package:xlo/screens/product/widget/description_panel.dart';
 import 'package:xlo/screens/product/widget/local_panel.dart';
 import 'package:xlo/screens/product/widget/main_panel.dart';
 import 'package:xlo/screens/product/widget/user_panel.dart';
+import 'package:xlo/screens/product/widget/bottom_bar.dart';
 
 class ProductScreen extends StatelessWidget {
 
@@ -19,39 +20,42 @@ class ProductScreen extends StatelessWidget {
       title: const Text('Anúncio'),
       elevation: 0,
     ),
-    body: ListView(
+    body: Stack(
       children: <Widget>[
-        Container(
-          height: 200,
-          child: Carousel(
-            images: anuncioView.images.map((f){
-              return FileImage(f);
-            }).toList(),
-            dotSize: 4,
-            dotSpacing: 15,
-            dotBgColor: Colors.transparent,
-            dotColor: Colors.pink,
-            autoplay: false,
-          ),
+        ListView(
+          children: <Widget>[
+            Container(
+              height: 200,
+              child: Carousel(
+                images: anuncioView.images.map((f){
+                  return FileImage(f);
+                }).toList(),
+                dotSize: 4,
+                dotSpacing: 15,
+                dotBgColor: Colors.transparent,
+                dotColor: Colors.pink,
+                autoplay: false,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  MainPanel(anuncioView),
+                  Divider(),
+                  DescriptionPanel(anuncioView),
+                  Divider(),
+                  LocalPanel(anuncioView),
+                  Divider(),
+                  UserPanel(anuncioView),              
+                  SizedBox(height: 120,),
+                ],
+              ),
+            )
+          ],
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              MainPanel(anuncioView),
-              Divider(),
-              DescriptionPanel(anuncioView),
-              Divider(),
-              LocalPanel(anuncioView),
-              Divider(),
-              UserPanel(anuncioView),
-              
-
-
-            ],
-          ),
-        )
+        BottomBar(anuncioView),
       ],
     ),
     );
