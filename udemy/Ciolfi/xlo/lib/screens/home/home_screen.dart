@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:xlo/blocs/home_bloc.dart';
 import 'package:xlo/common/custom_drawer/custom_drawer.dart';
 import 'package:xlo/models/anuncio_view.dart';

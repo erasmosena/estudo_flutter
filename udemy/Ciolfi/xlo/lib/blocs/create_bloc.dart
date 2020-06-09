@@ -12,7 +12,7 @@ class CreateBloc {
 
     //enviar para o repositório
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 2));
     _stateController.add(CreateState.DONE);
     return true;
   }

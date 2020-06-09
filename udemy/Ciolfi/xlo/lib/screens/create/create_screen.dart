@@ -92,7 +92,8 @@ class _CreateScreenState extends State<CreateScreen> {
                         labelStyle: TextStyle(
                             fontWeight: FontWeight.w800,
                             color: Colors.grey,
-                            fontSize: 18)),
+                            fontSize: 18),
+                        contentPadding: const EdgeInsets.fromLTRB(10, 10, 12, 10),),
                     validator: (text) {
                       if (text.trim().isEmpty) return 'Campo obrigatório';
                       if (text.trim().length < 10)

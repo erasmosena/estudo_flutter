@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:xlo/blocs/drawer_bloc.dart';
 import 'package:xlo/screens/base/base_screen.dart';
@@ -35,6 +36,13 @@ class _XloAppState extends State<XloApp> {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate
+          ],
+          supportedLocales: [
+            Locale('pt','BR')
+          ],
           home: BaseScreen()),
     );
   }

@@ -9,6 +9,8 @@ class AnuncioView {
   Address address;
   num price;
   bool hidePhone;
+  DateTime dateCreated;
+
 
   AnuncioView({
     this.images,
@@ -17,7 +19,10 @@ class AnuncioView {
     this.address,
     this.price,
     this.hidePhone,
-  });
+    this.dateCreated }
+  ){
+    dateCreated = DateTime.now();
+  }
 
   
 
@@ -29,6 +34,7 @@ class AnuncioView {
       'address': address?.toMap(),
       'price': price,
       'hidePhone': hidePhone,
+      'dateCreated':dateCreated,
     };
   }
 
@@ -42,6 +48,7 @@ class AnuncioView {
       address: Address.fromMap(map['address']),
       price: map['price'],
       hidePhone: map['hidePhone'],
+      dateCreated: map['dateCreated'],
     );
   }
 
@@ -49,7 +56,7 @@ class AnuncioView {
 
   @override
   String toString() {
-    return "$images, $title, $description, $address, $price, $hidePhone";
+    return "$images, $title, $description, $address, $price, $hidePhone, $dateCreated";
   }
 
   static AnuncioView fromJson(String source) => fromMap(json.decode(source));
