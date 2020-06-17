@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
 
-  CustomTextField({this.hint,this.prefix, this.suffix, this.textInputType, this.onChanged, this.enable, this.obscure = false,this.controller});
+  CustomTextField({this.hint,this.prefix, this.suffix, this.textInputType, this.onChanged, this.enabled, this.obscure = false,this.controller});
 
   final TextEditingController controller;
 
@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
   final Widget suffix;
   final TextInputType textInputType;
   final Function(String) onChanged ;
-  final bool enable;
+  final bool enabled;
   final bool obscure;
 
 
@@ -25,6 +25,7 @@ class CustomTextField extends StatelessWidget {
       ),
       padding: prefix != null ? null: const EdgeInsets.only(left: 16),
       child: TextField(
+        enabled: enabled,
         controller:controller,
         obscureText: obscure,
         keyboardType: textInputType,
