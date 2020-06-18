@@ -37,6 +37,10 @@ abstract class _LoginStore with Store{
   @action 
   void setPassword(String value )=> password = value ; 
 
+  @computed
+  Function get loginPressed => 
+    (isEmailValid && isPasswordValid && !isLoading)? login : null;
+
   @action 
   Future<void> login() async { 
     isLoading = true;
@@ -54,7 +58,6 @@ abstract class _LoginStore with Store{
   bool get isEmailValid =>  
   RegExp(pattern).hasMatch(email) ;
 
-  @computed
-  bool get isFormValid => isEmailValid && isPasswordValid;
+  
 
 }

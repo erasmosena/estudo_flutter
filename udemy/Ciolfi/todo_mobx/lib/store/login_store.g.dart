@@ -9,6 +9,13 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
+  Computed<Function> _$loginPressedComputed;
+
+  @override
+  Function get loginPressed =>
+      (_$loginPressedComputed ??= Computed<Function>(() => super.loginPressed,
+              name: '_LoginStore.loginPressed'))
+          .value;
   Computed<bool> _$isPasswordValidComputed;
 
   @override
@@ -22,13 +29,6 @@ mixin _$LoginStore on _LoginStore, Store {
   bool get isEmailValid =>
       (_$isEmailValidComputed ??= Computed<bool>(() => super.isEmailValid,
               name: '_LoginStore.isEmailValid'))
-          .value;
-  Computed<bool> _$isFormValidComputed;
-
-  @override
-  bool get isFormValid =>
-      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
-              name: '_LoginStore.isFormValid'))
           .value;
 
   final _$emailAtom = Atom(name: '_LoginStore.email');
@@ -136,13 +136,13 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     return '''
-      email: $email,
-      password: $password,
-      isObscure: $isObscure,
-      isLoading: $isLoading,
-      isPasswordValid: $isPasswordValid,
-      isEmailValid: $isEmailValid,
-      isFormValid: $isFormValid
+email: ${email},
+password: ${password},
+isObscure: ${isObscure},
+isLoading: ${isLoading},
+loginPressed: ${loginPressed},
+isPasswordValid: ${isPasswordValid},
+isEmailValid: ${isEmailValid}
     ''';
   }
 }
