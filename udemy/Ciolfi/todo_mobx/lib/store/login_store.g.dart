@@ -91,6 +91,21 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$isLoggedInAtom = Atom(name: '_LoginStore.isLoggedIn');
+
+  @override
+  bool get isLoggedIn {
+    _$isLoggedInAtom.reportRead();
+    return super.isLoggedIn;
+  }
+
+  @override
+  set isLoggedIn(bool value) {
+    _$isLoggedInAtom.reportWrite(value, super.isLoggedIn, () {
+      super.isLoggedIn = value;
+    });
+  }
+
   final _$loginAsyncAction = AsyncAction('_LoginStore.login');
 
   @override
@@ -140,6 +155,7 @@ email: ${email},
 password: ${password},
 isObscure: ${isObscure},
 isLoading: ${isLoading},
+isLoggedIn: ${isLoggedIn},
 loginPressed: ${loginPressed},
 isPasswordValid: ${isPasswordValid},
 isEmailValid: ${isEmailValid}

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:todo_mobx/screens/list_screen.dart';
 import 'package:todo_mobx/store/login_store.dart';
 import 'package:todo_mobx/widget/custo_text_field.dart';
 import 'package:todo_mobx/widget/custom_icon_button.dart';
-
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,6 +13,31 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   LoginStore loginStore = LoginStore();
+  ReactionDisposer disposer;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    disposer = reaction((_) => loginStore.isLoggedIn, (loggedIn) {
+      if (loggedIn) {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) => ListScreen()));
+      }
+    });
+    // autorun((_) {
+    //   if (loginStore.isLoggedIn) {
+    //     Navigator.of(context)
+    //         .pushReplacement(MaterialPageRoute(builder: (_) => ListScreen()));
+    //   }
+    // });
+  }
+
+  @override
+  void dispose() {
+    disposer();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

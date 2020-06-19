@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_mobx/screens/login_screen.dart';
+import 'package:todo_mobx/store/list_store.dart';
 import 'package:todo_mobx/widget/custo_text_field.dart';
 import 'package:todo_mobx/widget/custom_icon_button.dart';
 
@@ -9,6 +10,9 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
+
+  ListStore listStore = ListStore();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,7 +54,7 @@ class _ListScreenState extends State<ListScreen> {
                     children: <Widget>[
                       CustomTextField(
                         hint: 'Tarefa',
-                        onChanged: (todo) {},
+                        onChanged: listStore.setNewTodoTitle,
                         suffix: CustomIconButton(
                           radius: 32,
                           iconData: Icons.add,

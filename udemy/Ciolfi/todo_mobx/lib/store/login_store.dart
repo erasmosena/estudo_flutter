@@ -26,6 +26,8 @@ abstract class _LoginStore with Store{
   @observable
   bool isLoading = false;
 
+  @observable
+  bool isLoggedIn = false;
 
 
   @action 
@@ -46,6 +48,7 @@ abstract class _LoginStore with Store{
     isLoading = true;
     await Future.delayed(Duration(seconds: 5));
     isLoading = false;
+    isLoggedIn = true;
   }
 
 
